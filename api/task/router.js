@@ -19,6 +19,7 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
     try {
         const task = await Tasks.create(req.body)
+        Tasks.booleanCheck(task)
         res.status(200).json(task)
     } catch (err) {
         console.log(err)

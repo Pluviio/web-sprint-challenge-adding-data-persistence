@@ -5,7 +5,7 @@ const Projects = require('./model.js')
 router.get('/', async (req, res) => {
     try {
         const projects = await Projects.getAll()
-        projects.forEach( p => {
+        projects.forEach(p => {
             Projects.booleanCheck(p)
         })
         res.status(200).json(projects)
@@ -19,6 +19,7 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
     try {
         const project = await Projects.create(req.body)
+        Projects.booleanCheck(project)
         res.status(200).json(project)
     } catch (err) {
         console.log(err)

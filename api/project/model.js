@@ -16,9 +16,9 @@ const getById = async (id) => {
     .first()
 }
 
-async function create (resource){
+async function create (project){
     const [id] = await db('projects')
-    .insert(resource)
+    .insert(project)
     return getById(id)
 }
 
